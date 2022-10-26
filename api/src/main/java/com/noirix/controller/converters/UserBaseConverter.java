@@ -15,8 +15,7 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
 
         userForUpdate.setUserName(request.getUserName());
         userForUpdate.setSurname(request.getSurname());
-        userForUpdate.setBirth(request.getBirth());
-        userForUpdate.setWeight(request.getWeight());
+        userForUpdate.setBirthday(request.getBirth());
 
         /*System fields filling*/
         userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));

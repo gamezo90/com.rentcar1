@@ -55,14 +55,6 @@ public class HibernateUser {
     @Column
     private String surname;
 
-    @Column
-    private Timestamp birth;
-
-    /*null, true, false*/
-    @Column(name = "is_deleted")
-    @JsonIgnore
-    private Boolean isDeleted;
-
     @Column(name = "creation_date")
     @JsonIgnore
     private Timestamp creationDate;
@@ -71,9 +63,25 @@ public class HibernateUser {
     @JsonIgnore
     private Timestamp modificationDate;
 
-    /*0, null*/
+    @Column(name = "is_banned")
+    @JsonIgnore
+    private Boolean isBanned;
+
+    @Column(name = "is_deleted")
+    @JsonIgnore
+    private Boolean isDeleted;
+
     @Column
-    private Double weight;
+    private String region;
+
+    @Column
+    @JsonIgnore
+    private Timestamp birthday;
+
+    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
+    private Gender gender = Gender.NOT_SELECTED;
+
 
     @Embedded
     @AttributeOverrides({
@@ -89,9 +97,6 @@ public class HibernateUser {
 //    @JsonIgnore
 //    private String userPassword;
 
-    @Column(name = "gender")
-    @Enumerated(EnumType.STRING)
-    private Gender gender = Gender.NOT_SELECTED;
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

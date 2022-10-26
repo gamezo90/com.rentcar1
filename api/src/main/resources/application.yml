@@ -19,7 +19,7 @@ spring:
       maximum-pool-size: 20
       driver-class-name: org.postgresql.Driver
     username: postgres
-    password: root
+    password: postgres
     url: "jdbc:postgresql://localhost:5432/jd2"
   #
   #  cache:
@@ -61,25 +61,25 @@ spring:
   profiles:
     active: dev
     include: jwt-top-secret
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    baseline-description: Flyway Scripts
-    #    locations: classpath:/migration
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    url: ${spring.datasource.url}
-    #    default-schema: carshop
-    out-of-order: true
-    ignore-migration-patterns: '*:ignored'
-    schemas: carshop
+#  flyway:
+#    enabled: true
+#    baseline-on-migrate: true
+#    baseline-description: Flyway Scripts
+#    #    locations: classpath:/migration
+#    user: ${spring.datasource.username}
+#    password: ${spring.datasource.password}
+#    url: ${spring.datasource.url}
+#    #    default-schema: carshop
+#    out-of-order: true
+#    ignore-migration-patterns: '*:ignored'
+#    schemas: carshop
   datasource:
     hikari:
       jdbc-url: "jdbc:postgresql://localhost:5432/jd2"
       maximum-pool-size: 5
       driver-class-name: org.postgresql.Driver
     username: postgres
-    password: root
+    password: postgres
     url: "jdbc:postgresql://localhost:5432/jd2"
   #
   #  cache:
@@ -103,7 +103,7 @@ spring:
         cache:
           use_query_cache: true
 server:
-  port: 8081
+  port: 8080
 jwt:
   secret: devsecret777**
   expiration: 100000

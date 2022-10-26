@@ -18,9 +18,9 @@ public interface UserSpringDataRepository extends CrudRepository<HibernateUser, 
 
     HibernateUser findByCredentialsLogin(String login);
 
-    List<HibernateUser> findByCredentialsLoginAndUserNameAndBirth(String login, String name, Timestamp birthDate);
+    List<HibernateUser> findByCredentialsLoginAndUserNameAndBirthday(String login, String name, Timestamp birthDate);
 
-    List<HibernateUser> findByCredentialsLoginAndUserNameOrBirthOrderByIdDescUserNameDesc(String login, String name, Timestamp birthDate);
+    List<HibernateUser> findByCredentialsLoginAndUserNameOrBirthdayOrderByIdDescUserNameDesc(String login, String name, Timestamp birthDate);
 
     List<HibernateUser> findByIsDeletedOrderByIdDesc(Boolean isDeleted);
 
