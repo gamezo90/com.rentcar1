@@ -1,6 +1,7 @@
 package com.noirix.domain.hibernate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -18,20 +19,32 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "shop_order")
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class HibernateShopOrder {
+@Table(name = "order_history")
+@org.springframework.cache.annotation.Cacheable("order_history")
+@javax.persistence.Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "creation_date")
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
+
+    @Column(name = "car_id", insertable = false, updatable = false)
+    private Long carId;
+
+    @Column(name = " creation_date")
+    @JsonIgnore
     private Timestamp creationDate;
 
-    @Column
-    private Double sum;
+    @Column(name = "modification_date")
+    @JsonIgnore
+    private Timestamp modificationDate;
+
+    @Column(name = "expiration_date")
+    private Timestamp expirationDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

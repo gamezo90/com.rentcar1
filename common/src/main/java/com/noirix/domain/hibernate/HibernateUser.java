@@ -106,7 +106,7 @@ public class HibernateUser {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
-    private Set<HibernateShopOrder> orders;
+    private Set<Order> orders;
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
