@@ -111,5 +111,5 @@ public class HibernateUser {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
-    private HibernateMedicalInfo info;
+    private Discount discountSystem;
 }
