@@ -3,7 +3,6 @@ package com.noirix.controller;
 import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
 import com.noirix.controller.requests.UserSearchRequest;
-import com.noirix.domain.SearchCriteria;
 import com.noirix.domain.User;
 import com.noirix.domain.hibernate.HibernateRole;
 import com.noirix.domain.hibernate.HibernateUser;
