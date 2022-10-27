@@ -1,41 +1,52 @@
 package com.noirix.controller;
 
+import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
 import com.noirix.controller.requests.UserSearchRequest;
 import com.noirix.domain.SearchCriteria;
 import com.noirix.domain.User;
+import com.noirix.domain.hibernate.HibernateRole;
+import com.noirix.domain.hibernate.HibernateUser;
 import com.noirix.repository.hibernate.HibernateUserInterface;
-import com.noirix.service.UserService;
+import com.noirix.repository.springdata.RolesSpringDataRepository;
+import com.noirix.repository.springdata.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.sql.Timestamp;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/rest/users")
 public class UserRestController {
 
-    private final UserService userService;
+    private final UserSpringDataRepository userService;
 
     private final HibernateUserInterface userRepository;
 
     private final HibernateUserInterface hibernateUserInterface;
+
+    private final ConversionService converter;
+
+    private final UserSpringDataRepository repository;
+
+    private final RolesSpringDataRepository rolesSpringDataRepository;
 
 
     @GetMapping
@@ -68,20 +79,20 @@ public class UserRestController {
         //return Collections.singletonMap("result", userService.findAll());
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<Object> findAllUsersWithParams(@ModelAttribute UserSearchRequest userSearchRequest) {
-
-        int verifiedLimit = Integer.parseInt(userSearchRequest.getLimit());
-        int verifiedOffset = Integer.parseInt(userSearchRequest.getOffset());
-
-        List<User> users = userService.search(verifiedLimit, verifiedOffset);
-
-        Map<String, Object> model = new HashMap<>();
-        model.put("user", "Slava");
-        model.put("users", users);
-
-        return new ResponseEntity<>(model, HttpStatus.OK);
-    }
+//    @GetMapping("/search")
+//    public ResponseEntity<Object> findAllUsersWithParams(@ModelAttribute UserSearchRequest userSearchRequest) {
+//
+//        int verifiedLimit = Integer.parseInt(userSearchRequest.getLimit());
+//        int verifiedOffset = Integer.parseInt(userSearchRequest.getOffset());
+//
+//        List<HibernateUser> users = userService.search(verifiedLimit, verifiedOffset);
+//
+//        Map<String, Object> model = new HashMap<>();
+//        model.put("user", "Slava");
+//        model.put("users", users);
+//
+//        return new ResponseEntity<>(model, HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> findUserById(@PathVariable String id) {
@@ -93,26 +104,36 @@ public class UserRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createUser(@RequestBody UserCreateRequest createRequest) {
+    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
+    public ResponseEntity<Object> createUser(@Valid @RequestBody UserCreateRequest createRequest) {
 
-        User user = new User();
-        user.setUserName(createRequest.getUserName());
-        user.setSurname(createRequest.getSurname());
-        user.setBirth(new Timestamp(new Date().getTime()));
-        user.setCreationDate(new Timestamp(new Date().getTime()));
-        user.setModificationDate(new Timestamp(new Date().getTime()));
-        user.setIsDeleted(false);
-        user.setWeight(createRequest.getWeight());
+        RoleRequest roleRequest = new RoleRequest();
 
-        userService.create(user);
+        HibernateUser user = converter.convert(createRequest, HibernateUser.class);
+        HibernateUser createdUser = repository.save(setRoles(user));
 
-        List<User> users = userService.findAll();
+        HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
+        //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
 
         Map<String, Object> model = new HashMap<>();
-        model.put("user", user.getUserName());
-        model.put("users", users);
+        model.put("user", repository.findById(createdUser.getId()).get());
 
         return new ResponseEntity<>(model, HttpStatus.CREATED);
+    }
+    private HibernateUser setRoles(HibernateUser user) {
+        Set<HibernateRole> roles = user.getRoles();
+
+        Set<HibernateRole> updatedRoles = new HashSet<>();
+
+        if (!CollectionUtils.isEmpty(roles)) {
+            updatedRoles.addAll(roles);
+        }
+        updatedRoles.add(rolesSpringDataRepository.findById(1L).get());
+        updatedRoles.add(rolesSpringDataRepository.findById(2L).get());
+
+        user.setRoles(updatedRoles);
+
+        return user;
     }
 
 
