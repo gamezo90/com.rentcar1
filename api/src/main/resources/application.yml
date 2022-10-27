@@ -43,7 +43,7 @@ spring:
         cache:
           use_query_cache: true
 server:
-  port: 8080
+  port: 8081
 jwt:
   secret: qwepuisdhfaksdjflsdfn12321___**
   expiration: 600000
@@ -103,7 +103,7 @@ spring:
         cache:
           use_query_cache: true
 server:
-  port: 8080
+  port: 8081
 jwt:
   secret: devsecret777**
   expiration: 100000

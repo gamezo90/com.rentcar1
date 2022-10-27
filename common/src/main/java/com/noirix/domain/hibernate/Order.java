@@ -55,6 +55,5 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "car_id")
     @JsonBackReference
- //   @JsonManagedReference
     private Car car;
 }

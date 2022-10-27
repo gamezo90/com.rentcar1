@@ -80,10 +80,9 @@ public class Car {
     private HibernateUser user;
 
 
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+//    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JsonManagedReference
-    @JsonBackReference
-    private Set<Order> orders;
+//    private Set<Order> orders;
 }
 
