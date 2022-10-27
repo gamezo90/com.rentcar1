@@ -5,7 +5,6 @@ import com.noirix.controller.requests.UserCreateRequest;
 import com.noirix.domain.Gender;
 import com.noirix.domain.hibernate.HibernateRole;
 import com.noirix.domain.hibernate.HibernateUser;
-import com.noirix.repository.jdbctemplate.RoleRepositoryInterface;
 import com.noirix.repository.springdata.RolesSpringDataRepository;
 import com.noirix.repository.springdata.UserSpringDataRepository;
 import com.noirix.security.util.PrincipalUtil;
@@ -49,8 +48,6 @@ public class UserController {
     private final UserSpringDataRepository repository;
 
     private final RolesSpringDataRepository rolesSpringDataRepository;
-
-    private final RoleRepositoryInterface roleRepository;
 
     private final ConversionService converter;
 
