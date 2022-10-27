@@ -3,7 +3,7 @@ package com.noirix.controller;
 import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
 import com.noirix.domain.Role;
-import com.noirix.domain.HibernateUser;
+import com.noirix.domain.User;
 import com.noirix.repository.RolesSpringDataRepository;
 import com.noirix.repository.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +40,7 @@ public class UserMVCController {
 
     @GetMapping
     public ModelAndView findAllUsers() {
-        List<HibernateUser> users = userService.findAll();
+        List<User> users = userService.findAll();
 
         ModelAndView model = new ModelAndView();
         model.addObject("user", "Slava");
@@ -73,7 +73,7 @@ public class UserMVCController {
 
         //We have added id parsing and number format checking
         long userId = Long.parseLong(id);
-        Optional<HibernateUser> user = userService.findById(userId);
+        Optional<User> user = userService.findById(userId);
 
         ModelAndView model = new ModelAndView();
         model.addObject("userName", user.get().getUserName());
@@ -90,8 +90,8 @@ public class UserMVCController {
 
         RoleRequest roleRequest = new RoleRequest();
 
-        HibernateUser user = converter.convert(createRequest, HibernateUser.class);
-        HibernateUser createdUser = repository.save(setRoles(user));
+        User user = converter.convert(createRequest, User.class);
+        User createdUser = repository.save(setRoles(user));
 
         Role convertTest = converter.convert(roleRequest, Role.class);
         //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
@@ -101,7 +101,7 @@ public class UserMVCController {
 
         return new ResponseEntity<>(model, HttpStatus.CREATED);
     }
-    private HibernateUser setRoles(HibernateUser user) {
+    private User setRoles(User user) {
         Set<Role> roles = user.getRoles();
 
         Set<Role> updatedRoles = new HashSet<>();

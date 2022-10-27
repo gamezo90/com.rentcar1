@@ -2,7 +2,7 @@ package com.noirix.controller.converters;
 
 import com.noirix.controller.requests.UserCreateRequest;
 import com.noirix.domain.Credentials;
-import com.noirix.domain.HibernateUser;
+import com.noirix.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,16 +13,16 @@ import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
-public class UserCreateConverter extends UserBaseConverter<UserCreateRequest, HibernateUser> {
+public class UserCreateConverter extends UserBaseConverter<UserCreateRequest, User> {
 
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public HibernateUser convert(UserCreateRequest source) {
+    public User convert(UserCreateRequest source) {
 
-        HibernateUser hibernateUser = new HibernateUser();
+        User user = new User();
 
-        hibernateUser.setCreationDate(new Timestamp(new Date().getTime()));
+        user.setCreationDate(new Timestamp(new Date().getTime()));
 
 
         String simplePassword = RandomStringUtils.randomAlphabetic(10);
@@ -33,8 +33,8 @@ public class UserCreateConverter extends UserBaseConverter<UserCreateRequest, Hi
                 passwordEncoder.encode(simplePassword)
         );
 
-        hibernateUser.setCredentials(credentials);
+        user.setCredentials(credentials);
 
-        return doConvert(hibernateUser, source);
+        return doConvert(user, source);
     }
 }

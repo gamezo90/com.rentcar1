@@ -48,5 +48,5 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     @JsonIgnoreProperties("roles")
-    private Set<HibernateUser> users;
+    private Set<User> users;
 }

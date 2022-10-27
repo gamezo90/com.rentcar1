@@ -46,6 +46,6 @@ public class Discount {
     @OneToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private HibernateUser user;
+    private User user;
 
 }

@@ -1,7 +1,7 @@
 package com.noirix.repository;
 
 import com.noirix.domain.Gender;
-import com.noirix.domain.HibernateUser;
+import com.noirix.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,30 +13,30 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserSpringDataRepository extends CrudRepository<HibernateUser, Long>, JpaRepository<HibernateUser, Long>, PagingAndSortingRepository<HibernateUser, Long> {
+public interface UserSpringDataRepository extends CrudRepository<User, Long>, JpaRepository<User, Long>, PagingAndSortingRepository<User, Long> {
 
-    HibernateUser findByIdAndGender(Long id, Gender gender);
+    User findByIdAndGender(Long id, Gender gender);
 
-    HibernateUser findByCredentialsLogin(String login);
+    User findByCredentialsLogin(String login);
 
-    List<HibernateUser> findByCredentialsLoginAndUserNameAndBirthday(String login, String name, Timestamp birthDate);
+    List<User> findByCredentialsLoginAndUserNameAndBirthday(String login, String name, Timestamp birthDate);
 
-    List<HibernateUser> findByCredentialsLoginAndUserNameOrBirthdayOrderByIdDescUserNameDesc(String login, String name, Timestamp birthDate);
+    List<User> findByCredentialsLoginAndUserNameOrBirthdayOrderByIdDescUserNameDesc(String login, String name, Timestamp birthDate);
 
-    List<HibernateUser> findByIsDeletedOrderByIdDesc(Boolean isDeleted);
+    List<User> findByIsDeletedOrderByIdDesc(Boolean isDeleted);
 
     //select * from m_users where (login = ? and name = ?) or birth_date = ?
 
-    @Query(value = "select u from HibernateUser u")
-    List<HibernateUser> findByHQLQuery();
+    @Query(value = "select u from User u")
+    List<User> findByHQLQuery();
 
     @Query(value = "select * from carshop.users", nativeQuery = true)
-    List<HibernateUser> findByHQLQueryNative();
+    List<User> findByHQLQueryNative();
 
-    @Query(value = "select u from HibernateUser u where u.credentials.login = :login and u.userName = :userName")
-    List<HibernateUser> findByHQLQuery(String login, @Param("userName") String name);
+    @Query(value = "select u from User u where u.credentials.login = :login and u.userName = :userName")
+    List<User> findByHQLQuery(String login, @Param("userName") String name);
 
-    @Query("select u.id, u.userName from HibernateUser u")
+    @Query("select u.id, u.userName from User u")
     List<Object[]> getPartsOfUser();
 
 
@@ -44,6 +44,6 @@ public interface UserSpringDataRepository extends CrudRepository<HibernateUser, 
     @Query(value = "insert into carshop.l_role_user(user_id, role_id) values (:user_id, :role_id)", nativeQuery = true)
     int createRoleRow(@Param("user_id") Long userId, @Param("role_id") Long roleId);
 
-    @Query(value = "select u from HibernateUser u")
-    Optional<HibernateUser> findByLogin(String login);
+    @Query(value = "select u from User u")
+    Optional<User> findByLogin(String login);
 }

@@ -17,6 +17,6 @@ public interface RolesSpringDataRepository extends JpaRepository<Role, Long> {
     List<Role> findAll();
 
     @Query(value = "select r from Role  r" +
-            " inner join HibernateUser u on r.id = u.id ")
+            " inner join User u on r.id = u.id ")
     List<Role> findRolesByUserId(Long userId);
 }

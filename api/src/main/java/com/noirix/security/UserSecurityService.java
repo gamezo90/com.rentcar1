@@ -1,7 +1,7 @@
 package com.noirix.security;
 
 import com.noirix.domain.Role;
-import com.noirix.domain.HibernateUser;
+import com.noirix.domain.User;
 import com.noirix.domain.SystemRoles;
 import com.noirix.repository.RolesSpringDataRepository;
 import com.noirix.repository.UserSpringDataRepository;
@@ -27,10 +27,10 @@ public class UserSecurityService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             /*Find user in DB*/
-            Optional<HibernateUser> searchResult = userRepository.findByLogin(username);
+            Optional<User> searchResult = userRepository.findByLogin(username);
 
             if (searchResult.isPresent()) {
-                HibernateUser user = searchResult.get();
+                User user = searchResult.get();
 
                 /*We are creating Spring Security User object*/
 

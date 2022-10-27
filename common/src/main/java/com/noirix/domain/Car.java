@@ -74,7 +74,7 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private HibernateUser user;
+    private User user;
 
 
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
