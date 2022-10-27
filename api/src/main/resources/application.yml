@@ -9,18 +9,18 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
-#    default-schema: carshop
+#    default-schema: rentcar
     out-of-order: true
     ignore-migration-patterns: '*:ignored'
-    schemas: carshop
+    schemas: rentcar
   datasource:
     hikari:
-      jdbc-url: "jdbc:postgresql://localhost:5432/jd2"
+      jdbc-url: "jdbc:postgresql://localhost:5432/rentcar"
       maximum-pool-size: 20
       driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
-    url: "jdbc:postgresql://localhost:5432/jd2"
+    url: "jdbc:postgresql://localhost:5432/rentcar"
   #
   #  cache:
   #    type: Caffeine
@@ -69,18 +69,18 @@ spring:
 #    user: ${spring.datasource.username}
 #    password: ${spring.datasource.password}
 #    url: ${spring.datasource.url}
-#    #    default-schema: carshop
+#    #    default-schema: rentcar
 #    out-of-order: true
 #    ignore-migration-patterns: '*:ignored'
-#    schemas: carshop
+#    schemas: rentcar
   datasource:
     hikari:
-      jdbc-url: "jdbc:postgresql://localhost:5432/jd2"
+      jdbc-url: "jdbc:postgresql://localhost:5432/rentcar"
       maximum-pool-size: 5
       driver-class-name: org.postgresql.Driver
     username: postgres
     password: postgres
-    url: "jdbc:postgresql://localhost:5432/jd2"
+    url: "jdbc:postgresql://localhost:5432/rentcar"
   #
   #  cache:
   #    type: Caffeine

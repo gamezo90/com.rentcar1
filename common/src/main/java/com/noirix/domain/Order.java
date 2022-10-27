@@ -1,13 +1,10 @@
-package com.noirix.domain.hibernate;
+package com.noirix.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +47,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private HibernateUser user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "car_id")

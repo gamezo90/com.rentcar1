@@ -1,9 +1,7 @@
-package com.noirix.domain.hibernate;
+package com.noirix.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -13,7 +11,6 @@ import org.springframework.cache.annotation.Cacheable;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Data
 @Entity
@@ -77,7 +74,7 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
-    private HibernateUser user;
+    private User user;
 
 
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
