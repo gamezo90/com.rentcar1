@@ -30,7 +30,7 @@ public interface UserSpringDataRepository extends CrudRepository<User, Long>, Jp
     @Query(value = "select u from User u")
     List<User> findByHQLQuery();
 
-    @Query(value = "select * from carshop.users", nativeQuery = true)
+    @Query(value = "select * from rentcar.users", nativeQuery = true)
     List<User> findByHQLQueryNative();
 
     @Query(value = "select u from User u where u.credentials.login = :login and u.userName = :userName")
@@ -41,7 +41,7 @@ public interface UserSpringDataRepository extends CrudRepository<User, Long>, Jp
 
 
     @Modifying
-    @Query(value = "insert into carshop.l_role_user(user_id, role_id) values (:user_id, :role_id)", nativeQuery = true)
+    @Query(value = "insert into rentcar.l_role_user(user_id, role_id) values (:user_id, :role_id)", nativeQuery = true)
     int createRoleRow(@Param("user_id") Long userId, @Param("role_id") Long roleId);
 
     @Query(value = "select u from User u")
