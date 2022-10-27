@@ -7,7 +7,6 @@ import com.noirix.domain.SearchCriteria;
 import com.noirix.domain.User;
 import com.noirix.domain.hibernate.HibernateRole;
 import com.noirix.domain.hibernate.HibernateUser;
-import com.noirix.repository.hibernate.HibernateUserInterface;
 import com.noirix.repository.springdata.RolesSpringDataRepository;
 import com.noirix.repository.springdata.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,9 +37,9 @@ public class UserRestController {
 
     private final UserSpringDataRepository userService;
 
-    private final HibernateUserInterface userRepository;
+    private final UserSpringDataRepository userRepository;
 
-    private final HibernateUserInterface hibernateUserInterface;
+    private final UserSpringDataRepository hibernateUserInterface;
 
     private final ConversionService converter;
 
@@ -59,15 +58,15 @@ public class UserRestController {
         return new ResponseEntity<>(Collections.singletonMap("result", hibernateUserInterface.findAll()), HttpStatus.OK);
     }
 
-    @GetMapping
-    @RequestMapping("/hibernate/criteria")
-    //@ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Object> findAllHibernateUsers(@ModelAttribute SearchCriteria criteria) {
-
-        return new ResponseEntity<>(Collections.singletonMap("result", userRepository.criteriaAPITest(criteria)), HttpStatus.OK);
-
-        //return Collections.singletonMap("result", userService.findAll());
-    }
+//    @GetMapping
+//    @RequestMapping("/hibernate/criteria")
+//    //@ResponseStatus(HttpStatus.OK)
+//    public ResponseEntity<Object> findAllHibernateUsers(@ModelAttribute SearchCriteria criteria) {
+//
+//        return new ResponseEntity<>(Collections.singletonMap("result", userRepository.criteriaAPITest(criteria)), HttpStatus.OK);
+//
+//        //return Collections.singletonMap("result", userService.findAll());
+//    }
 
     @GetMapping
     @Secured("ROLE_ADMIN")

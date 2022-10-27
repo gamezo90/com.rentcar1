@@ -23,20 +23,20 @@ public class CustomAspect {
 //        log.info("Method " + joinPoint.getSignature().getName() + " finished");
 //    }
 
-    @Pointcut("execution(* com.noirix.repository.jdbctemplate.JdbcTemplateUserRepository.*(..))")
-    public void aroundRepositoryPointcut() {
-    }
+//    @Pointcut("execution(* com.noirix.repository.jdbctemplate.JdbcTemplateUserRepository.*(..))")
+//    public void aroundRepositoryPointcut() {
+//    }
 
-    @Around("aroundRepositoryPointcut()")
-    public Object logAroundMethods(ProceedingJoinPoint joinPoint) throws Throwable {
-
-        System.out.println(joinPoint.getArgs().length);
-
-        log.info("Method " + joinPoint.getSignature().getName() + " start");
-
-        Object proceed = joinPoint.proceed();
-
-        log.info("Method " + joinPoint.getSignature().getName() + " finished");
-        return proceed;
-    }
+//    @Around("aroundRepositoryPointcut()")
+//    public Object logAroundMethods(ProceedingJoinPoint joinPoint) throws Throwable {
+//
+//        System.out.println(joinPoint.getArgs().length);
+//
+//        log.info("Method " + joinPoint.getSignature().getName() + " start");
+//
+//        Object proceed = joinPoint.proceed();
+//
+//        log.info("Method " + joinPoint.getSignature().getName() + " finished");
+//        return proceed;
+//    }
 }
