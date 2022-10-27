@@ -2,8 +2,6 @@ package com.noirix.controller;
 
 import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.controller.requests.UserSearchRequest;
-import com.noirix.domain.User;
 import com.noirix.domain.hibernate.HibernateRole;
 import com.noirix.domain.hibernate.HibernateUser;
 import com.noirix.repository.springdata.RolesSpringDataRepository;
@@ -18,7 +16,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.sql.Timestamp;
 import java.util.*;
 
 @Controller
