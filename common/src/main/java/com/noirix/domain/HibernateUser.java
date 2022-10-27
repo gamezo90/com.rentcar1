@@ -1,9 +1,8 @@
-package com.noirix.domain.hibernate;
+package com.noirix.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.noirix.domain.Gender;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

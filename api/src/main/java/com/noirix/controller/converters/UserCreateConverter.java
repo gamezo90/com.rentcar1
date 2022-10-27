@@ -1,8 +1,8 @@
 package com.noirix.controller.converters;
 
 import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.domain.hibernate.Credentials;
-import com.noirix.domain.hibernate.HibernateUser;
+import com.noirix.domain.Credentials;
+import com.noirix.domain.HibernateUser;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;

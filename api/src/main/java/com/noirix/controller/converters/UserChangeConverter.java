@@ -1,10 +1,8 @@
 package com.noirix.controller.converters;
 
 import com.noirix.controller.requests.UserChangeRequest;
-import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.domain.hibernate.HibernateUser;
-import com.noirix.repository.springdata.UserSpringDataRepository;
-import lombok.NoArgsConstructor;
+import com.noirix.domain.HibernateUser;
+import com.noirix.repository.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

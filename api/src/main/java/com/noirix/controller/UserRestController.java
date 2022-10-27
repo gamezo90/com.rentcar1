@@ -2,10 +2,10 @@ package com.noirix.controller;
 
 import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.domain.hibernate.HibernateRole;
-import com.noirix.domain.hibernate.HibernateUser;
-import com.noirix.repository.springdata.RolesSpringDataRepository;
-import com.noirix.repository.springdata.UserSpringDataRepository;
+import com.noirix.domain.HibernateRole;
+import com.noirix.domain.HibernateUser;
+import com.noirix.repository.RolesSpringDataRepository;
+import com.noirix.repository.UserSpringDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;

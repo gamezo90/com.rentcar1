@@ -1,8 +1,7 @@
 package com.noirix.controller.converters;
 
 import com.noirix.controller.requests.RoleRequest;
-import com.noirix.domain.hibernate.HibernateRole;
-import com.noirix.domain.hibernate.HibernateUser;
+import com.noirix.domain.HibernateRole;
 import lombok.NoArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

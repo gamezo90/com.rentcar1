@@ -1,7 +1,7 @@
-package com.noirix.repository.springdata;
+package com.noirix.repository;
 
 import com.noirix.domain.Gender;
-import com.noirix.domain.hibernate.HibernateUser;
+import com.noirix.domain.HibernateUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

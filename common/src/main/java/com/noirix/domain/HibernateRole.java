@@ -1,7 +1,6 @@
-package com.noirix.domain.hibernate;
+package com.noirix.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.noirix.domain.SystemRoles;
 import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;

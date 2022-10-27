@@ -1,6 +1,6 @@
 package com.noirix.controller.springdata;
 
-import com.noirix.repository.springdata.RolesSpringDataRepository;
+import com.noirix.repository.RolesSpringDataRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

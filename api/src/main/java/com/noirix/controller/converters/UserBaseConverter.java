@@ -1,9 +1,7 @@
 package com.noirix.controller.converters;
 
 import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.domain.hibernate.Credentials;
-import com.noirix.domain.hibernate.HibernateUser;
-import org.apache.commons.lang3.RandomStringUtils;
+import com.noirix.domain.HibernateUser;
 import org.springframework.core.convert.converter.Converter;
 
 import java.sql.Timestamp;
