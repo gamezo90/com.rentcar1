@@ -1,6 +1,6 @@
 package com.noirix.security;
 
-import com.noirix.domain.HibernateRole;
+import com.noirix.domain.Role;
 import com.noirix.domain.HibernateUser;
 import com.noirix.domain.SystemRoles;
 import com.noirix.repository.RolesSpringDataRepository;
@@ -41,7 +41,7 @@ public class UserSecurityService implements UserDetailsService {
                         AuthorityUtils.commaSeparatedStringToAuthorityList(
                                 roleRepository.findRolesByUserId(user.getId())
                                         .stream()
-                                        .map(HibernateRole::getRoleName)
+                                        .map(Role::getRoleName)
                                         .map(SystemRoles::name)
                                         .collect(Collectors.joining(","))
                         )

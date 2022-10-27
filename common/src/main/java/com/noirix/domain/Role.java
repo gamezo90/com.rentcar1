@@ -26,7 +26,7 @@ import java.util.Set;
 @Cacheable("roles")
 @javax.persistence.Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class HibernateRole {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

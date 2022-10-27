@@ -2,7 +2,7 @@ package com.noirix.controller;
 
 import com.noirix.controller.requests.RoleRequest;
 import com.noirix.controller.requests.UserCreateRequest;
-import com.noirix.domain.HibernateRole;
+import com.noirix.domain.Role;
 import com.noirix.domain.HibernateUser;
 import com.noirix.repository.RolesSpringDataRepository;
 import com.noirix.repository.UserSpringDataRepository;
@@ -106,7 +106,7 @@ public class UserRestController {
         HibernateUser user = converter.convert(createRequest, HibernateUser.class);
         HibernateUser createdUser = repository.save(setRoles(user));
 
-        HibernateRole convertTest = converter.convert(roleRequest, HibernateRole.class);
+        Role convertTest = converter.convert(roleRequest, Role.class);
         //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
 
         Map<String, Object> model = new HashMap<>();
@@ -115,9 +115,9 @@ public class UserRestController {
         return new ResponseEntity<>(model, HttpStatus.CREATED);
     }
     private HibernateUser setRoles(HibernateUser user) {
-        Set<HibernateRole> roles = user.getRoles();
+        Set<Role> roles = user.getRoles();
 
-        Set<HibernateRole> updatedRoles = new HashSet<>();
+        Set<Role> updatedRoles = new HashSet<>();
 
         if (!CollectionUtils.isEmpty(roles)) {
             updatedRoles.addAll(roles);
