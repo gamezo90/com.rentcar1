@@ -3,8 +3,8 @@ package com.rentcar.security;
 import com.rentcar.domain.Role;
 import com.rentcar.domain.User;
 import com.rentcar.domain.SystemRoles;
-import com.rentcar.repository.RolesSpringDataRepository;
-import com.rentcar.repository.UserSpringDataRepository;
+import com.rentcar.repository.RolesRepository;
+import com.rentcar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -19,9 +19,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserSecurityService implements UserDetailsService {
 
-    private final UserSpringDataRepository userRepository;
+    private final UserRepository userRepository;
 
-    private final RolesSpringDataRepository roleRepository;
+    private final RolesRepository roleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

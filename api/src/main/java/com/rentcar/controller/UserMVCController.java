@@ -4,8 +4,8 @@ import com.rentcar.controller.requests.RoleRequest;
 import com.rentcar.controller.requests.UserCreateRequest;
 import com.rentcar.domain.Role;
 import com.rentcar.domain.User;
-import com.rentcar.repository.RolesSpringDataRepository;
-import com.rentcar.repository.UserSpringDataRepository;
+import com.rentcar.repository.RolesRepository;
+import com.rentcar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
@@ -30,13 +30,13 @@ import java.util.*;
 @RequestMapping("/users")
 public class UserMVCController {
 
-    private final UserSpringDataRepository userService;
+    private final UserRepository userService;
 
     private final ConversionService converter;
 
-    private final UserSpringDataRepository repository;
+    private final UserRepository repository;
 
-    private final RolesSpringDataRepository rolesSpringDataRepository;
+    private final RolesRepository rolesRepository;
 
     @GetMapping
     public ModelAndView findAllUsers() {
@@ -109,8 +109,8 @@ public class UserMVCController {
         if (!CollectionUtils.isEmpty(roles)) {
             updatedRoles.addAll(roles);
         }
-        updatedRoles.add(rolesSpringDataRepository.findById(1L).get());
-        updatedRoles.add(rolesSpringDataRepository.findById(2L).get());
+        updatedRoles.add(rolesRepository.findById(1L).get());
+        updatedRoles.add(rolesRepository.findById(2L).get());
 
         user.setRoles(updatedRoles);
 

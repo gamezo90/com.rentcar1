@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RolesSpringDataRepository extends JpaRepository<Role, Long> {
+public interface RolesRepository extends JpaRepository<Role, Long> {
 
     @Cacheable("roles")
     //@Query(value = "select r from HibernateRole r")

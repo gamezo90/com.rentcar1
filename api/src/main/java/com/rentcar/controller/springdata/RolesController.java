@@ -1,6 +1,6 @@
 package com.rentcar.controller.springdata;
 
-import com.rentcar.repository.RolesSpringDataRepository;
+import com.rentcar.repository.RolesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.util.Collections;
 @RequestMapping("/rest/data/roles")
 public class RolesController {
 
-    private final RolesSpringDataRepository repository;
+    private final RolesRepository repository;
 
     @GetMapping
     public ResponseEntity<Object> findAllRolesWithCache() {

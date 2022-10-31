@@ -5,8 +5,8 @@ import com.rentcar.controller.requests.UserCreateRequest;
 import com.rentcar.domain.Gender;
 import com.rentcar.domain.Role;
 import com.rentcar.domain.User;
-import com.rentcar.repository.RolesSpringDataRepository;
-import com.rentcar.repository.UserSpringDataRepository;
+import com.rentcar.repository.RolesRepository;
+import com.rentcar.repository.UserRepository;
 import com.rentcar.security.util.PrincipalUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -42,9 +42,9 @@ import java.util.Set;
 @RequestMapping("/rest/data/users")
 public class UserController {
 
-    private final UserSpringDataRepository repository;
+    private final UserRepository repository;
 
-    private final RolesSpringDataRepository rolesSpringDataRepository;
+    private final RolesRepository rolesRepository;
 
     private final ConversionService converter;
 
@@ -113,8 +113,8 @@ public class UserController {
         if (!CollectionUtils.isEmpty(roles)) {
             updatedRoles.addAll(roles);
         }
-        updatedRoles.add(rolesSpringDataRepository.findById(1L).get());
-        updatedRoles.add(rolesSpringDataRepository.findById(2L).get());
+        updatedRoles.add(rolesRepository.findById(1L).get());
+        updatedRoles.add(rolesRepository.findById(2L).get());
 
         user.setRoles(updatedRoles);
 

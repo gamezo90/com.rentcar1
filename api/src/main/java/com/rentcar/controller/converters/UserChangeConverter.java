@@ -2,7 +2,7 @@ package com.rentcar.controller.converters;
 
 import com.rentcar.controller.requests.UserChangeRequest;
 import com.rentcar.domain.User;
-import com.rentcar.repository.UserSpringDataRepository;
+import com.rentcar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserChangeConverter extends UserBaseConverter<UserChangeRequest, User> {
 
-    private final UserSpringDataRepository repository;
+    private final UserRepository repository;
 
     @Override
     public User convert(UserChangeRequest source) {
