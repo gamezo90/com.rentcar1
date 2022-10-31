@@ -99,7 +99,8 @@ public class User {
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("users")
+    @JsonManagedReference
+//    @JsonIgnoreProperties("users")
     private Set<Role> roles;
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
