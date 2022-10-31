@@ -30,7 +30,7 @@ public class RolesController {
 //        );
 //    }
 
-    @GetMapping("/gsdfg")
+    @GetMapping("/findAllRoles")
     public ResponseEntity<Object> findAllRoles() {
 
         return new ResponseEntity<>(Collections.singletonMap("result",

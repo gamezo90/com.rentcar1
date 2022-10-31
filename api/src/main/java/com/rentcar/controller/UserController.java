@@ -48,7 +48,7 @@ public class UserController {
 
     private final ConversionService converter;
 
-    @GetMapping
+    @GetMapping("/findAllUser")
     public ResponseEntity<Object> findAllUser() {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
