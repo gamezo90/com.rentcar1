@@ -25,12 +25,6 @@ public class AuthenticationController {
 
     private final UserDetailsService userProvider;
 
-    //    @ApiOperation(value = "Login user in system", notes = "Return Auth-Token with user login")
-//    @ApiResponses({
-//            @ApiResponse(code = 200, message = "Successful authorization"),
-//            @ApiResponse(code = 400, message = "Request error"),
-//            @ApiResponse(code = 500, message = "Server error")
-//    })
     @PostMapping
     public ResponseEntity<AuthResponse> loginUser(@RequestBody AuthRequest request) {
 
@@ -52,13 +46,4 @@ public class AuthenticationController {
                         .build()
         );
     }
-
-    //localhost:8080/authentication POST
-/*
-    {
-
-    "login": "login",
-    "password": "password"
-
-   }   -> new AuthRequest(login, password) */
 }
