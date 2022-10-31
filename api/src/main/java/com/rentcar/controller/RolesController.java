@@ -20,8 +20,6 @@ public class RolesController {
     @GetMapping
     public ResponseEntity<Object> findAllRolesWithCache() {
 
-        System.out.println("-------------Start roles controller test ---------------");
-
         return new ResponseEntity<>(
                 Collections.singletonMap("result", repository.findAll()),
                 HttpStatus.OK

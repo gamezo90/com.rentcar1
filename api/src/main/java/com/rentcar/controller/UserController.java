@@ -39,7 +39,7 @@ import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rest/data/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserRepository repository;
@@ -49,11 +49,10 @@ public class UserController {
     private final ConversionService converter;
 
     @GetMapping
-    public ResponseEntity<Object> testEndpoint() {
+    public ResponseEntity<Object> findAllUser() {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
-                //repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
-                repository.findByIsDeletedOrderByIdDesc(false)), HttpStatus.OK);
+                repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
     }
 
     @GetMapping("/test")
@@ -85,6 +84,13 @@ public class UserController {
         System.out.println(userByPrincipal);
         return new ResponseEntity<>(repository.findAll(PageRequest.of(0, 10)), HttpStatus.OK);
     }
+
+//
+//    @GetMapping
+//    public ResponseEntity<Object> findAllUsers(@ParameterObject Pageable pageable) {
+//        Page<UserResponse> users = userService.findAll(pageable).map(userMapper::toResponse);
+//        return new ResponseEntity<>(users, HttpStatus.OK);
+//    }
 
 
     @PostMapping
