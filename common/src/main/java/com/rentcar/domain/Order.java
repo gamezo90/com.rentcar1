@@ -33,7 +33,7 @@ public class Order {
 
 //    @Column(name = "user_id", insertable = false, updatable = false)
 //    private Long userId;
-
+//
 //    @Column(name = "car_id", insertable = false, updatable = false)
 //    private Long carId;
 
