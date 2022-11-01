@@ -13,12 +13,12 @@ import java.util.Collections;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/rest/data/car")
+@RequestMapping("/api/car")
 public class CarController {
 
     private final CarRepository repository;
 
-    @GetMapping
+    @GetMapping("/findAllCars")
     public ResponseEntity<Object> findAllCars() {
 
         return new ResponseEntity<>(
