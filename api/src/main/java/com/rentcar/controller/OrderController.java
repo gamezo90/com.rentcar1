@@ -20,7 +20,7 @@ public class OrderController {
     private final OrderRepository repository;
 
     @GetMapping("/findAllOrders")
-    public ResponseEntity<Object> findAllUser() {
+    public ResponseEntity<Object> findAllOrders() {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);

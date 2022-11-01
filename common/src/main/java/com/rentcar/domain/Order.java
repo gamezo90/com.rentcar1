@@ -31,11 +31,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(name = "user_id", insertable = false, updatable = false)
-//    private Long userId;
-//
-//    @Column(name = "car_id", insertable = false, updatable = false)
-//    private Long carId;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
+
+    @Column(name = "car_id", insertable = false, updatable = false)
+    private Long carId;
 
     @Column(name = " creation_date")
     @JsonIgnore
