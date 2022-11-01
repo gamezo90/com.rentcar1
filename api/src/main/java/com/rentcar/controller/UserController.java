@@ -21,12 +21,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
@@ -55,11 +50,11 @@ public class UserController {
                 repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
     }
 
-    @GetMapping("/findAllUser1")
-    public ResponseEntity<Object> finddasdas() {
+    @GetMapping("/test")
+    public ResponseEntity<Object> testEndpointSearchQuery(@RequestParam("id") Long userId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findById(1L)), HttpStatus.OK);
+                repository.findById(userId)), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Finding all users with Page Info response")
@@ -67,23 +62,7 @@ public class UserController {
             @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
             @ApiImplicitParam(name = "query", defaultValue = "query", required = false, paramType = "query", dataType = "string")
 
-//            @ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
-//                    value = "Results page you want to retrieve (0..N)"),
-//            @ApiImplicitParam(name = "size", dataType = "integer", paramType = "query",
-//                    value = "Number of records per page."),
-//            @ApiImplicitParam(name = "sort", allowMultiple = true, dataType = "string", paramType = "query",
-//                    value = "Sorting criteria in the format: property(,asc|desc). " +
-//                            "Default sort order is ascending. " +
-//                            "Multiple sort criteria are supported.")
     })
-
-//
-//    @GetMapping
-//    public ResponseEntity<Object> findAllUsers(@ParameterObject Pageable pageable) {
-//        Page<UserResponse> users = userService.findAll(pageable).map(userMapper::toResponse);
-//        return new ResponseEntity<>(users, HttpStatus.OK);
-//    }
-
 
     @PostMapping
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
