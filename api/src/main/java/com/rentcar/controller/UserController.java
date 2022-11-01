@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @GetMapping("/test")
-    public ResponseEntity<Object> testEndpointSearchQuery(@RequestParam("id") Long userId) {
+    public ResponseEntity<Object> findById(@RequestParam("id") Long userId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findById(userId)), HttpStatus.OK);
