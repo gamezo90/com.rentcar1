@@ -1,4 +1,4 @@
-package com.rentcar.controller.springdata;
+package com.rentcar.controller;
 
 
 import com.rentcar.repository.CarRepository;
