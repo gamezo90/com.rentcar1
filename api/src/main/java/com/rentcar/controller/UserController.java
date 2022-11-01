@@ -50,8 +50,8 @@ public class UserController {
                 repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<Object> findById(@RequestParam("id") Long userId) {
+    @GetMapping("/findUserById")
+    public ResponseEntity<Object> findUserById(@RequestParam("id") Long userId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findById(userId)), HttpStatus.OK);
