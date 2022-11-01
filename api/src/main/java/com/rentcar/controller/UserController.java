@@ -62,13 +62,6 @@ public class UserController {
                 repository.findById(1L)), HttpStatus.OK);
     }
 
-    @GetMapping("/test")
-    public ResponseEntity<Object> testEndpointSearchQuery(@RequestParam("id") Long userId, @RequestParam("gender") String gender) {
-
-        return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findByIdAndGender(userId, Gender.valueOf(gender))), HttpStatus.OK);
-    }
-
     @ApiOperation(value = "Finding all users with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
@@ -83,14 +76,6 @@ public class UserController {
 //                            "Default sort order is ascending. " +
 //                            "Multiple sort criteria are supported.")
     })
-    @GetMapping("/swagger-test")
-    public ResponseEntity<Page<User>> findAll(@ApiIgnore Principal principal) {
-        String username = PrincipalUtil.getUsername(principal);
-        User userByPrincipal = repository.findByCredentialsLogin(username);
-
-        System.out.println(userByPrincipal);
-        return new ResponseEntity<>(repository.findAll(PageRequest.of(0, 10)), HttpStatus.OK);
-    }
 
 //
 //    @GetMapping

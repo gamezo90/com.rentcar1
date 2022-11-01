@@ -11,10 +11,6 @@ import java.util.List;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-//    @Cacheable("roles")
-//    //@Query(value = "select r from HibernateRole r")
-//    List<Role> findAll();
-
     @Query(value = "select r from Role  r" +
             " inner join User u on r.id = u.id ")
     List<Role> findRolesByUserId(Long userId);
