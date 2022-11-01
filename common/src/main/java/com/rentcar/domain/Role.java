@@ -48,7 +48,7 @@ public class Role {
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-//    @JsonIgnoreProperties("roles")
-    @JsonBackReference
+    @JsonIgnoreProperties("roles")
+//    @JsonBackReference
     private Set<User> users;
 }

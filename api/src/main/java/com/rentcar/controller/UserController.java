@@ -55,6 +55,13 @@ public class UserController {
                 repository.findAll(PageRequest.of(0, 10))), HttpStatus.OK);
     }
 
+    @GetMapping("/findAllUser1")
+    public ResponseEntity<Object> finddasdas() {
+
+        return new ResponseEntity<>(Collections.singletonMap("result",
+                repository.findById(1L)), HttpStatus.OK);
+    }
+
     @GetMapping("/test")
     public ResponseEntity<Object> testEndpointSearchQuery(@RequestParam("id") Long userId, @RequestParam("gender") String gender) {
 
