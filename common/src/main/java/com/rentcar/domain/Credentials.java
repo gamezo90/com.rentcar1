@@ -32,7 +32,7 @@ public class Credentials {
    @Column(name = "user_email")
    private String email;
 
-   @Column(name = "user_id")
+    @Column(name = "user_id", insertable = false, updatable = false)
    private Long userId;
 
 

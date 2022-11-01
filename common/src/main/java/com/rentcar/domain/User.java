@@ -33,10 +33,10 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {
-        "roles", "orders", "info"
+        "roles", "orders", "info","credentials"
 })
 @ToString(exclude = {
-        "roles", "orders", "info"
+        "roles", "orders", "info","credentials"
 })
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -82,12 +82,12 @@ public class User {
     private Gender gender = Gender.NOT_SELECTED;
 
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "login", column = @Column(name = "user_login")),
-            @AttributeOverride(name = "password", column = @Column(name = "user_password"))
-    })
-    private Credentials credentials;
+//    @Embedded
+//    @AttributeOverrides({
+//            @AttributeOverride(name = "login", column = @Column(name = "user_login")),
+//            @AttributeOverride(name = "password", column = @Column(name = "user_password"))
+//    })
+//    private Credentials credentials;
 
 //    @Column(name = "user_login")
 //    private String userLogin;
