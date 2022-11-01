@@ -3,6 +3,8 @@ package com.rentcar.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.cache.annotation.Cacheable;
@@ -23,6 +25,8 @@ import java.util.Set;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = { "users" })
+@ToString(exclude = { "users"})
 @Table(name = "roles")
 @Cacheable("roles")
 @javax.persistence.Cacheable
