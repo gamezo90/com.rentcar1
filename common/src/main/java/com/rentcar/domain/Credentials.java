@@ -35,7 +35,6 @@ public class Credentials {
     @Column(name = "user_id", insertable = false, updatable = false)
    private Long userId;
 
-
    @OneToOne
    @JoinColumn(name = "user_id")
    @JsonBackReference

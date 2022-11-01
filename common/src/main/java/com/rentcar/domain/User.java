@@ -81,22 +81,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender = Gender.NOT_SELECTED;
 
-
-//    @Embedded
-//    @AttributeOverrides({
-//            @AttributeOverride(name = "login", column = @Column(name = "user_login")),
-//            @AttributeOverride(name = "password", column = @Column(name = "user_password"))
-//    })
-//    private Credentials credentials;
-
-//    @Column(name = "user_login")
-//    private String userLogin;
-//
-//    @Column(name = "user_password")
-//    @JsonIgnore
-//    private String userPassword;
-
-
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference

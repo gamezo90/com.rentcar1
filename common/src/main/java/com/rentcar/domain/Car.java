@@ -76,7 +76,6 @@ public class Car {
     @JsonBackReference
     private User user;
 
-
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 //    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 //    @JsonManagedReference
