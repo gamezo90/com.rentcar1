@@ -3,6 +3,8 @@ package com.rentcar.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Column;
@@ -17,6 +19,8 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = { "user", "car"})
+@ToString(exclude = { "user", "car"})
 @Table(name = "order_history")
 @org.springframework.cache.annotation.Cacheable("order_history")
 @javax.persistence.Cacheable
