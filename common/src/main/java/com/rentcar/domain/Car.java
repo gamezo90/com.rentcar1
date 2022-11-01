@@ -15,10 +15,10 @@ import java.sql.Timestamp;
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {
-        "roles", "orders", "cars"
+        "orders", "users"
 })
 @ToString(exclude = {
-        "roles", "orders", "cars"
+        "orders", "users"
 })
 @Table(name = "cars")
 @Cacheable("cars")
