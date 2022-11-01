@@ -1,9 +1,7 @@
 package com.rentcar.controller;
 
-import com.rentcar.repository.RolesRepository;
-import com.rentcar.repository.UserRepository;
+import com.rentcar.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +16,7 @@ import java.util.Collections;
 @RequestMapping("/api/roles")
 public class RolesController {
 
-    private final RolesRepository repository;
+    private final RoleRepository repository;
 
 
 //    @GetMapping

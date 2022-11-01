@@ -5,7 +5,7 @@ import com.rentcar.controller.requests.UserCreateRequest;
 import com.rentcar.domain.Gender;
 import com.rentcar.domain.Role;
 import com.rentcar.domain.User;
-import com.rentcar.repository.RolesRepository;
+import com.rentcar.repository.RoleRepository;
 import com.rentcar.repository.UserRepository;
 import com.rentcar.security.util.PrincipalUtil;
 import io.swagger.annotations.ApiImplicitParam;
@@ -44,7 +44,7 @@ public class UserController {
 
     private final UserRepository repository;
 
-    private final RolesRepository rolesRepository;
+    private final RoleRepository roleRepository;
 
     private final ConversionService converter;
 
@@ -126,8 +126,8 @@ public class UserController {
         if (!CollectionUtils.isEmpty(roles)) {
             updatedRoles.addAll(roles);
         }
-        updatedRoles.add(rolesRepository.findById(1L).get());
-        updatedRoles.add(rolesRepository.findById(2L).get());
+        updatedRoles.add(roleRepository.findById(1L).get());
+        updatedRoles.add(roleRepository.findById(2L).get());
 
         user.setRoles(updatedRoles);
 

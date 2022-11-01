@@ -54,8 +54,8 @@ public class Car {
     @Column
     private Double price;
 
-//    @Column(name = "user_id", insertable = false, updatable = false)
-//    private Long userId;
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
 
     @Column
     private String photo;
