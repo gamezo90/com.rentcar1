@@ -14,7 +14,7 @@ import java.util.Collections;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/roles")
-public class RolesController {
+public class RoleController {
 
     private final RoleRepository repository;
 
