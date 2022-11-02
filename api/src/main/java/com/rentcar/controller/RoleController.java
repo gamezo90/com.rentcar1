@@ -38,6 +38,6 @@ public class RoleController {
     public ResponseEntity<Object> findRolesByUserId(@RequestParam("id") Long userId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findRolesByUserId1(userId)), HttpStatus.OK);
+                repository.findRolesByUserId(userId)), HttpStatus.OK);
     }
 }

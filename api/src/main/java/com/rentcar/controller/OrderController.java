@@ -40,4 +40,11 @@ public class OrderController {
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findOrdersByCarId(carId)), HttpStatus.OK);
     }
+
+    @GetMapping("/findOrdersByUserId")
+    public ResponseEntity<Object> findOrdersByUserId(@RequestParam("id") Long userId) {
+
+        return new ResponseEntity<>(Collections.singletonMap("result",
+                repository.findOrdersByUserId(userId)), HttpStatus.OK);
+    }
 }
