@@ -34,7 +34,7 @@ public class OrderController {
                 repository.findById(orderId)), HttpStatus.OK);
     }
 
-    @GetMapping("/findOrdersByCarId")
+    @GetMapping("/findOrderByCarId")
     public ResponseEntity<Object> findOrdersByCarId(@RequestParam("id") Long carId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
