@@ -28,14 +28,14 @@ public class OrderController {
     }
 
     @GetMapping("/findOrderById")
-    public ResponseEntity<Object> findOrderById(@RequestParam("id") Long orderId) {
+    public ResponseEntity<Object> findOrdersById(@RequestParam("id") Long orderId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findById(orderId)), HttpStatus.OK);
     }
 
     @GetMapping("/findOrdersByUserId")
-    public ResponseEntity<Object> findRoleByUserId(@RequestParam("id") Long userId) {
+    public ResponseEntity<Object> findOrdersByUserId(@RequestParam("id") Long userId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
                 repository.findOrdersByUserId(userId)), HttpStatus.OK);
