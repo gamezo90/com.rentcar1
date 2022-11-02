@@ -65,6 +65,16 @@ public class UserController {
     }
 
 
+    @GetMapping("/swagger-test")
+    public ResponseEntity<Page<User>> findAll(@RequestParam("user_login") String login, @ApiIgnore Principal principal) {
+        String username = PrincipalUtil.getUsername(principal);
+        User userByPrincipal = repository.findByCredentialsLogin(username);
+
+        System.out.println(userByPrincipal);
+        return new ResponseEntity<>(repository.findAll(PageRequest.of(0, 10)), HttpStatus.OK);
+    }
+
+
 
     @ApiOperation(value = "Finding all users with Page Info response")
     @ApiImplicitParams({
