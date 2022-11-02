@@ -23,11 +23,11 @@ public class UserCreateRequest {
     @Size(min = 2, max = 50)
     private String surname;
 
-    @ApiModelProperty(required = true, allowableValues = "1665685166000", dataType = "timestamp", notes = "user's birth")
-    private Timestamp birth;
+    @ApiModelProperty(required = true, allowableValues = "hgfdhdcghd", dataType = "string", notes = "user's region")
+    private String region;
 
-    @ApiModelProperty(required = true, allowableValues = "86", dataType = "double", notes = "user's weight")
-    private Double weight;
+    @ApiModelProperty(required = true, allowableValues = "1665685166000", dataType = "timestamp", notes = "user's birth")
+    private Timestamp birthday;
 
     @ApiModelProperty(required = true, allowableValues = "MALE, FEMALE, NOT_SELECTED", dataType = "string", notes = "user's gender")
     private Gender gender;

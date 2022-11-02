@@ -64,14 +64,14 @@ public class UserController {
                 repository.findByCredentialsLogin(login)), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Finding all users with Page Info response")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
-            @ApiImplicitParam(name = "query", defaultValue = "query", required = false, paramType = "query", dataType = "string")
+//    @ApiOperation(value = "Finding all users with Page Info response")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
+//            @ApiImplicitParam(name = "query", defaultValue = "query", required = false, paramType = "query", dataType = "string")
+//
+//    })
 
-    })
-
-    @PostMapping
+    @PostMapping("/createUser")
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
     public ResponseEntity<Object> createUser(@Valid @RequestBody UserCreateRequest createRequest) {
 
