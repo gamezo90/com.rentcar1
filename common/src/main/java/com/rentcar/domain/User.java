@@ -33,10 +33,10 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode(exclude = {
-        "roles", "orders", "info","credentials"
+        "roles", "orders"
 })
 @ToString(exclude = {
-        "roles", "orders", "info","credentials"
+        "roles", "orders"
 })
 @Table(name = "users")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

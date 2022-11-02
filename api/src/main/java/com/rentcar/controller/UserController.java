@@ -58,10 +58,10 @@ public class UserController {
     }
 
     @GetMapping("/findUserByLogin")
-    public ResponseEntity<Object> findUserByLogin(@RequestParam("user_name") String login) {
+    public ResponseEntity<Object> findUserByLogin(@RequestParam("user_login") String login) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findByLogin(login)), HttpStatus.OK);
+                repository.findByCredentialsLogin(login)), HttpStatus.OK);
     }
 
 
@@ -73,6 +73,7 @@ public class UserController {
         System.out.println(userByPrincipal);
         return new ResponseEntity<>(repository.findAll(PageRequest.of(0, 10)), HttpStatus.OK);
     }
+
 
 
 
