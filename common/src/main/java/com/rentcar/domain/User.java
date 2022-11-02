@@ -77,6 +77,13 @@ public class User {
     @JsonIgnore
     private Timestamp birthday;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "login", column = @Column(name = "user_login")),
+            @AttributeOverride(name = "password", column = @Column(name = "user_password"))
+    })
+    private Credentials credentials;
+
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender = Gender.NOT_SELECTED;
@@ -100,9 +107,4 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private Set<Car> cars;
-
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference
-    private Credentials credentials;
 }

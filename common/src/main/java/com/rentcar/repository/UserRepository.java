@@ -15,5 +15,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "select u from User u")
     Optional<User> findByLogin(String login);
-
 }

@@ -57,6 +57,15 @@ public class UserController {
                 repository.findById(userId)), HttpStatus.OK);
     }
 
+    @GetMapping("/findUserByLogin")
+    public ResponseEntity<Object> findUserByLogin(@RequestParam("user_name") String login) {
+
+        return new ResponseEntity<>(Collections.singletonMap("result",
+                repository.findByLogin(login)), HttpStatus.OK);
+    }
+
+
+
     @ApiOperation(value = "Finding all users with Page Info response")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-Auth-Token", defaultValue = "token", required = true, paramType = "header", dataType = "string"),
