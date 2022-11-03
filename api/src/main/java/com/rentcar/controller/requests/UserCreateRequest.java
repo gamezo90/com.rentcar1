@@ -32,4 +32,18 @@ public class UserCreateRequest {
     @ApiModelProperty(required = true, allowableValues = "MALE, FEMALE, NOT_SELECTED", dataType = "string", notes = "user's gender")
     private Gender gender;
 
+    @ApiModelProperty(required = true, allowableValues = " ", dataType = "string", notes = "user's login")
+    @Size(min = 2,max = 100)
+    private String login;
+
+    @ApiModelProperty(required = true, allowableValues = "", dataType = "string", notes = "user's password")
+    @Size(min = 2,max = 255)
+    private String password;
+
+    @ApiModelProperty(required = true, allowableValues = "", dataType = "string", notes = "user's email")
+    @Size(min = 2,max = 255)
+    private String email;
+
+
+
 }
