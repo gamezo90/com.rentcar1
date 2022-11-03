@@ -1,6 +1,7 @@
 package com.rentcar.controller.converters;
 
 import com.rentcar.controller.requests.UserCreateRequest;
+import com.rentcar.domain.Credentials;
 import com.rentcar.domain.User;
 import org.springframework.core.convert.converter.Converter;
 
@@ -21,7 +22,7 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
         userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));
         userForUpdate.setIsDeleted(false);
         userForUpdate.setIsBanned(false);
-        
+
         return userForUpdate;
     }
 

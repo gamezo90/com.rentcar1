@@ -2,6 +2,7 @@ package com.rentcar.controller;
 
 import com.rentcar.controller.requests.RoleRequest;
 import com.rentcar.controller.requests.UserCreateRequest;
+import com.rentcar.controller.requests.UserUpdateRequest;
 import com.rentcar.domain.Gender;
 import com.rentcar.domain.Role;
 import com.rentcar.domain.User;
@@ -75,13 +76,10 @@ public class UserController {
     @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
     public ResponseEntity<Object> createUser(@Valid @RequestBody UserCreateRequest createRequest) {
 
-        RoleRequest roleRequest = new RoleRequest();
-
         User user = converter.convert(createRequest, User.class);
         User createdUser = repository.save(user);
 
-//        Role convertTest = converter.convert(roleRequest, Role.class);
-//        repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
+        repository.createRoleRow(createdUser.getId(),4L);
 
         Map<String, Object> model = new HashMap<>();
         model.put("user", repository.findById(createdUser.getId()).get());
@@ -89,19 +87,18 @@ public class UserController {
         return new ResponseEntity<>(model, HttpStatus.CREATED);
     }
 
-    private User setRoles(User user) {
-        Set<Role> roles = user.getRoles();
-
-        Set<Role> updatedRoles = new HashSet<>();
-
-        if (!CollectionUtils.isEmpty(roles)) {
-            updatedRoles.addAll(roles);
-        }
-        updatedRoles.add(roleRepository.findById(1L).get());
-        updatedRoles.add(roleRepository.findById(2L).get());
-
-        user.setRoles(updatedRoles);
-
-        return user;
-    }
+//    @PostMapping("/updateUser")
+//    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
+//    public ResponseEntity<Object> updateUser(@Valid @RequestBody UserUpdateRequest updateRequest) {
+//
+//        User user = converter.convert(updateRequest, User.class);
+//        User createdUser = repository.save(user);
+//
+//        repository.createRoleRow(createdUser.getId(),4L);
+//
+//        Map<String, Object> model = new HashMap<>();
+//        model.put("user", repository.findById(createdUser.getId()).get());
+//
+//        return new ResponseEntity<>(model, HttpStatus.CREATED);
+//    }
 }

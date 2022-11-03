@@ -17,4 +17,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByLogin(String login);
 
     User findByCredentialsLogin(String login);
+
+    @Modifying
+    @Query(value = "insert into rentcar.l_role_user(user_id, role_id) values (:user_id, :role_id)", nativeQuery = true)
+    int createRoleRow(@Param("user_id") Long userId, @Param("role_id") Long roleId);
 }

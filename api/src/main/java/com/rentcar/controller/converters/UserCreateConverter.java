@@ -24,14 +24,10 @@ public class UserCreateConverter extends UserBaseConverter<UserCreateRequest, Us
 
         user.setCreationDate(new Timestamp(new Date().getTime()));
 
-
-        String simplePassword = RandomStringUtils.randomAlphabetic(10);
-        System.out.println(simplePassword);
-
         Credentials credentials = new Credentials(
-                RandomStringUtils.randomAlphabetic(10),
-                passwordEncoder.encode(simplePassword),
-                RandomStringUtils.randomAlphabetic(10)
+                source.getLogin(),
+                passwordEncoder.encode(source.getPassword()),
+                source.getEmail()
         );
 
         user.setCredentials(credentials);
