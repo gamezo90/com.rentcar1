@@ -18,6 +18,6 @@ public class UserUpdateConverter extends UserBaseConverter<UserUpdateRequest, Us
     public User convert(UserUpdateRequest source) {
 
         Optional<User> user = repository.findById(source.getId());
-        return doConvert(user.get(), source);
+        return doUpdate(user.get(), source);
     }
 }

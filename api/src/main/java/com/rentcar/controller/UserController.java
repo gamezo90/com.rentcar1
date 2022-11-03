@@ -87,18 +87,18 @@ public class UserController {
         return new ResponseEntity<>(model, HttpStatus.CREATED);
     }
 
-//    @PostMapping("/updateUser")
-//    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
-//    public ResponseEntity<Object> updateUser(@Valid @RequestBody UserUpdateRequest updateRequest) {
-//
-//        User user = converter.convert(updateRequest, User.class);
-//        User createdUser = repository.save(user);
-//
+    @PostMapping("/updateUser")
+    @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED, timeout = 100, rollbackFor = Exception.class)
+    public ResponseEntity<Object> updateUser(@Valid @RequestBody UserUpdateRequest updateRequest) {
+
+        User user = converter.convert(updateRequest, User.class);
+        User updatedUser = repository.save(user);
+
 //        repository.createRoleRow(createdUser.getId(),4L);
-//
-//        Map<String, Object> model = new HashMap<>();
-//        model.put("user", repository.findById(createdUser.getId()).get());
-//
-//        return new ResponseEntity<>(model, HttpStatus.CREATED);
-//    }
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("user", repository.findById(updatedUser.getId()).get());
+
+        return new ResponseEntity<>(model, HttpStatus.CREATED);
+    }
 }

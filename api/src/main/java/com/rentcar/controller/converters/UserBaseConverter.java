@@ -1,6 +1,7 @@
 package com.rentcar.controller.converters;
 
 import com.rentcar.controller.requests.UserCreateRequest;
+import com.rentcar.controller.requests.UserUpdateRequest;
 import com.rentcar.domain.Credentials;
 import com.rentcar.domain.User;
 import org.springframework.core.convert.converter.Converter;
@@ -15,6 +16,21 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
         userForUpdate.setUserName(request.getUserName());
         userForUpdate.setSurname(request.getSurname());
         userForUpdate.setBirthday(request.getBirthday());
+        userForUpdate.setRegion(request.getRegion());
+        userForUpdate.setGender(request.getGender());
+
+        /*System fields filling*/
+        userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));
+        userForUpdate.setIsDeleted(false);
+        userForUpdate.setIsBanned(false);
+
+        return userForUpdate;
+    }
+
+    public User doUpdate(User userForUpdate, UserUpdateRequest request) {
+
+        userForUpdate.setUserName(request.getUserName());
+        userForUpdate.setSurname(request.getSurname());
         userForUpdate.setRegion(request.getRegion());
         userForUpdate.setGender(request.getGender());
 
