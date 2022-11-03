@@ -13,11 +13,14 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
 
         userForUpdate.setUserName(request.getUserName());
         userForUpdate.setSurname(request.getSurname());
-        userForUpdate.setBirthday(request.getBirth());
+        userForUpdate.setBirthday(request.getBirthday());
+        userForUpdate.setRegion(request.getRegion());
+        userForUpdate.setGender(request.getGender());
 
         /*System fields filling*/
         userForUpdate.setModificationDate(new Timestamp(new Date().getTime()));
         userForUpdate.setIsDeleted(false);
+        userForUpdate.setIsBanned(false);
         
         return userForUpdate;
     }

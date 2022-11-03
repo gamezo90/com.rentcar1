@@ -78,10 +78,10 @@ public class UserController {
         RoleRequest roleRequest = new RoleRequest();
 
         User user = converter.convert(createRequest, User.class);
-        User createdUser = repository.save(setRoles(user));
+        User createdUser = repository.save(user);
 
-        Role convertTest = converter.convert(roleRequest, Role.class);
-        //repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
+//        Role convertTest = converter.convert(roleRequest, Role.class);
+//        repository.createRoleRow(createdUser.getId(), roleRepository.findById(1L).getId());
 
         Map<String, Object> model = new HashMap<>();
         model.put("user", repository.findById(createdUser.getId()).get());

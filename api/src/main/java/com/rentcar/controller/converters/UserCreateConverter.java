@@ -19,23 +19,23 @@ public class UserCreateConverter extends UserBaseConverter<UserCreateRequest, Us
 
     @Override
     public User convert(UserCreateRequest source) {
-//
-//        User user = new User();
-//
-//        user.setCreationDate(new Timestamp(new Date().getTime()));
-//
-//
-//        String simplePassword = RandomStringUtils.randomAlphabetic(10);
-//        System.out.println(simplePassword);
-//
-//        Credentials credentials = new Credentials(
-//                RandomStringUtils.randomAlphabetic(10),
-//                passwordEncoder.encode(simplePassword)
-//        );
-//
-//        user.setCredentials(credentials);
-//
-//        return doConvert(user, source);
-        return null;
+
+        User user = new User();
+
+        user.setCreationDate(new Timestamp(new Date().getTime()));
+
+
+        String simplePassword = RandomStringUtils.randomAlphabetic(10);
+        System.out.println(simplePassword);
+
+        Credentials credentials = new Credentials(
+                RandomStringUtils.randomAlphabetic(10),
+                passwordEncoder.encode(simplePassword),
+                RandomStringUtils.randomAlphabetic(10)
+        );
+
+        user.setCredentials(credentials);
+
+        return doConvert(user, source);
     }
 }
