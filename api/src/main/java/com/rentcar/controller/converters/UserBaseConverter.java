@@ -29,6 +29,7 @@ public abstract class UserBaseConverter<S, T> implements Converter<S, T> {
 
     public User doUpdate(User userForUpdate, UserUpdateRequest request) {
 
+        userForUpdate.setId(request.getId());
         userForUpdate.setUserName(request.getUserName());
         userForUpdate.setSurname(request.getSurname());
         userForUpdate.setRegion(request.getRegion());
