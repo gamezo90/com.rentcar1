@@ -41,7 +41,7 @@
         <lombok.version.custom>1.18.22</lombok.version.custom>
         <jwt.version>0.9.1</jwt.version>
         <swagger.version>2.9.2</swagger.version>
-<!--        <mapstruct.version>1.5.2.FINAL</mapstruct.version>-->
+        <mapstruct.version>1.5.3.FINAL</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -222,14 +222,14 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.5.2.Final</version>
+            <version>${mapstruct.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.5.2.Final</version>
+            <version>${mapstruct.version}</version>
         </dependency>
 
 
