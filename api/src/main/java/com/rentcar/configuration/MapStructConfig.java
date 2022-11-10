@@ -1,6 +1,9 @@
 package com.rentcar.configuration;
 
-import com.zagvladimir.controller.mappers.*;
+import com.rentcar.controller.mappers.CarMapper;
+import com.rentcar.controller.mappers.OrderMapper;
+import com.rentcar.controller.mappers.RoleMapper;
+import com.rentcar.controller.mappers.UserMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,32 +17,18 @@ public class MapStructConfig {
     }
 
     @Bean
-    public SubItemTypeMapper subItemTypeMapper() {
-        return Mappers.getMapper(SubItemTypeMapper.class);
-    }
-
-    @Bean
     public RoleMapper roleMapper() {
         return Mappers.getMapper(RoleMapper.class);
     }
 
     @Bean
-    public ItemMapper itemMapper() {
-        return Mappers.getMapper(ItemMapper.class);
+    public CarMapper carMapper() {
+        return Mappers.getMapper(CarMapper.class);
     }
 
     @Bean
-    public ItemLeasedMapper itemLeasedMapper() {
-        return Mappers.getMapper(ItemLeasedMapper.class);
+    public OrderMapper orderMapper() {
+        return Mappers.getMapper(OrderMapper.class);
     }
 
-    @Bean
-    public ItemCategoryMapper itemCategoryMapper() {
-        return Mappers.getMapper(ItemCategoryMapper.class);
-    }
-
-    @Bean
-    public GradeMapper gradeMapper() {
-        return Mappers.getMapper(GradeMapper.class);
-    }
 }

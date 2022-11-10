@@ -3,5 +3,5 @@ package com.rentcar.controller.mappers;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface UserMapper {
+public interface CarMapper {
 }
