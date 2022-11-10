@@ -1,6 +1,7 @@
 package com.rentcar.controller;
 
 import com.rentcar.repository.RoleRepository;
+import com.rentcar.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import java.util.Collections;
 @RequestMapping("/api/roles")
 public class RoleController {
 
-    private final RoleRepository repository;
+    private final RoleService repository;
 
     @GetMapping("/findAllRoles")
     public ResponseEntity<Object> findAllRoles() {
@@ -30,7 +31,7 @@ public class RoleController {
     public ResponseEntity<Object> findRoleById(@RequestParam("id") Long roleId) {
 
         return new ResponseEntity<>(Collections.singletonMap("result",
-                repository.findById(roleId)), HttpStatus.OK);
+                repository.findRoleById(roleId)), HttpStatus.OK);
     }
 
 
