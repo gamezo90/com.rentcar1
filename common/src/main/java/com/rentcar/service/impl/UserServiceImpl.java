@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void create(User user) {
+    public User create(User user) {
         if (checkUserLoginAndEmailForNotExistInDB(user)) {
             Role roleUser = roleRepository.findByRoleName(SystemRoles.ROLE_USER);
 
@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
             userRepository.save(user);
         }
+        return user;
     }
 
     @Transactional
