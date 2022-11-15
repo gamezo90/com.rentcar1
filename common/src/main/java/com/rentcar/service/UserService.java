@@ -13,7 +13,7 @@ public interface UserService {
 
     Optional<User> findByLogin(String login);
 
-    void create(User user);
+    User create(User user);
 
     void update(User user);
 

@@ -3,9 +3,9 @@ package com.rentcar.controller.response;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Data
-
 public class UserResponse {
 
     private long id;
@@ -29,6 +29,8 @@ public class UserResponse {
     private String userPassword;
 
     private String userEmail;
+
+    private Set<RoleResponse> userRoles;
 
 }
 
