@@ -8,6 +8,8 @@ import org.mapstruct.Mapping;
 
 @Mapper(uses = {RoleMapper.class})
 public interface UserMapper {
+    @Mapping(source = "roles", target = "userRoles")
+    UserResponse toResponse(User user);
 
     @Mapping(source = "roles", target = "userRoles")
     UserResponse toResponse(User user);
